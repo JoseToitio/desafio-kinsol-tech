@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('category');
             $table->decimal('purchase_price', 10, 2);
             $table->decimal('sale_price', 10, 2);
-            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
+            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
         });
     }
