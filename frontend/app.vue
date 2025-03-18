@@ -1,5 +1,13 @@
+<script setup lang="ts">
+import Header from './components/Header.vue';
+
+</script>
+
 <template>
   <div>
-    <p>Hello World!</p>
+    <Header></Header>
+    <NuxtLayout>
+      <NuxtPage/>
+    </NuxtLayout>
   </div>
 </template>
