@@ -15,6 +15,7 @@ async function fetchUser() {
         user.value = data;
     } catch (error) {
         console.error('Erro ao buscar usuário:', error);
+        logout();
     }
 }
 
