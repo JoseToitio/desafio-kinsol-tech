@@ -101,12 +101,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Product::user()->products()->find($id);
+        // Obter o produto do usuário autenticado
+        $product = auth()->user()->products()->find($id);
 
         if (!$product) {
             return response()->json(['message' => 'Produto não encontrado'], 404);
         }
 
+        // Validar os dados recebidos no request
         $request->validate([
             'name' => 'sometimes|string',
             'description' => 'nullable|string',
@@ -116,7 +118,15 @@ class ProductController extends Controller
             'sale_price' => 'sometimes|numeric',
         ]);
 
-        $product->update($request->all());
+        // Atualizar os dados do produto
+        $product->update($request->only([
+            'name',
+            'description',
+            'image',
+            'category',
+            'purchase_price',
+            'sale_price'
+        ]));
 
         return response()->json($product);
     }
