@@ -82,12 +82,11 @@ php artisan serve
 ```bash
 cd frontend
 npm install
-cp .env.example .env
 ```
 
 Edite o `.env` para apontar para a API Laravel:
 ```env
-NUXT_PUBLIC_API_BASE=http://127.0.0.1:8000/api
+API_BASE_URL=http://127.0.0.1:8000/api
 ```
 
 Iniciar o servidor Nuxt.js:
@@ -119,9 +118,61 @@ POST /api/login
 }
 ```
 
+**Atualizar de um usuario:**
+```bash
+PUT /api/user
+{
+    "name": "Novo Nome",
+    "current_password": "senha123",
+    "password": "nova_senha",
+    "password_confirmation": "nova_senha"
+},
+headers: {
+              Authorization: Bearer {token do login}
+}
+
+```
+
 **Obter lista de produtos:**
 ```bash
 GET /api/products
+```
+
+**Obter um unico produto:**
+```bash
+GET /api/products/{id}
+```
+
+**Registrar um produto:**
+```bash
+POST /api/products
+{
+    "name": "Notebook",
+    "description": "Notebook Dell i7",
+    "image": "notebook.jpg",
+    "category": "Eletrônicos",
+    "purchase_price": 3000,
+    "sale_price": 3500
+},
+headers: {
+              Authorization: Bearer {token do login}
+}
+```
+
+**Atualizar um produto:**
+```bash
+POST /api/products/{id}
+{
+  "name": "Novo Notebook",
+  "description": "Notebook Dell i9",
+  "image": "notebook_i9.jpg"
+  "category": "Eletrônicos",
+  "purchase_price": 4500,
+  "sale_price": 5000,
+},
+headers: {
+              Authorization: Bearer {token do login}
+}
 ```
 
 ---
