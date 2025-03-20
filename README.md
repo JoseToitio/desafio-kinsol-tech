@@ -41,7 +41,7 @@ Este projeto é uma aplicação web full stack desenvolvida com **Laravel 11** (
 ```bash
 # Clonar o projeto
 git clone https://github.com/JoseToitio/desafio-kinsol-tech.git
-cd nome-do-repositorio
+cd desafio-kinsol-tech
 ```
 
 ### 📌 **2. Configuração do Backend (Laravel)**
