@@ -139,7 +139,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::user()->products()->find($id);
+        $product = auth()->user()->products()->find($id);
 
         if (!$product) {
             return response()->json(['message' => 'Produto não encontrado'], 404);
