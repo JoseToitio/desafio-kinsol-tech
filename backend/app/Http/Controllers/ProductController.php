@@ -102,7 +102,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         // Obter o produto do usuário autenticado
-        $product = auth()->user()->products()->find($id);
+        $product = Product::find($id);
 
         if (!$product) {
             return response()->json(['message' => 'Produto não encontrado'], 404);
@@ -139,7 +139,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = auth()->user()->products()->find($id);
+        $product = Product::find($id);
 
         if (!$product) {
             return response()->json(['message' => 'Produto não encontrado'], 404);
