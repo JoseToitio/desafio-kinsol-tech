@@ -29,7 +29,7 @@ function applyFilters() {
         <!-- Filtro de Categoria -->
         <select v-model="categoryFilter" class="border px-4 py-2 rounded-md w-1/4" @change="applyFilters">
             <option value="">Filtrar por categoria</option>
-            <option value="eletronicos">Eletrônicos</option>
+            <option value="Eletrônicos">Eletrônicos</option>
             <option value="roupas">Roupas</option>
             <option value="acessorios">Acessórios</option>
         </select>

@@ -45,9 +45,17 @@ const updateProduct = async () => {
     }
 };
 
-onMounted(() => {
-    fetchProduct();
-});
+const removeProduct = async () => {
+    try {
+        const response = await $api.delete(`/products/${route.params.id}`)
+        if (response) router.push('/')
+    } catch (error) {
+        errorMessage.value = 'Erro ao remover produto.';
+    }
+}
+
+fetchProduct();
+
 </script>
 
 <template>
@@ -68,7 +76,7 @@ onMounted(() => {
 
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700">Descrição (Opcional)</label>
-                    <textarea v-model="product.description" class="mt-1 p-2 w-full border rounded" ></textarea>
+                    <textarea v-model="product.description" class="mt-1 p-2 w-full border rounded"></textarea>
                 </div>
 
                 <div class="mb-4">
@@ -92,9 +100,16 @@ onMounted(() => {
                     <input v-model="product.image" type="text" class="mt-1 p-2 w-full border rounded" />
                 </div>
 
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">
-                    Salvar Alterações
-                </button>
+                <div class="flex gap-2 items-center">
+                    <button type="submit"
+                        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">
+                        Salvar Alterações
+                    </button>
+                    <button v-on:click="removeProduct"
+                        class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition">
+                        Remover Produto
+                    </button>
+                </div>
             </form>
         </div>
     </div>
